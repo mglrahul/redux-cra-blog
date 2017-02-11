@@ -85,6 +85,14 @@ export function deletePost(id){
     }
 }
 
+export function adminDeletePost(id){
+    return dispatch => {
+        return axios.get(`/api/post/adminDeletePost/${id}`).then((response) => {
+            return response
+        })
+    }
+}
+
 export function peginatedPostsData(page){
     return dispatch => {
         return axios.post('/api/post/getAllPosts', {'page':page}).then((response) => {

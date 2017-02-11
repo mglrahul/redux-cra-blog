@@ -2,7 +2,7 @@
 import {browserHistory} from 'react-router'
 import {connect} from 'react-redux';
 
-import { allPostsData, setAllPosts, deletePost, peginatedPostsData, resetPosts } from '../actions/post';
+import { allPostsData, setAllPosts, adminDeletePost, peginatedPostsData, resetPosts } from '../actions/post';
 import AdminPosts from '../components/AdminPosts';
 
 const mapStateToProps = (state) => {
@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(resetPosts())
         },
         deletePostRecord:(id) => {
-            dispatch(deletePost(id)).then((response) => {
+            dispatch(adminDeletePost(id)).then((response) => {
                 browserHistory.push('/')
             })
         },

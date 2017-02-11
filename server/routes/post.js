@@ -8,7 +8,6 @@ import authenticate from '../middleware/authenticate';
 let router = express.Router();
 
 router.get('/allCategory', (req, res) => {
-    //console.log('allCategory');
     Category.find(function(err, result){
         if(err){
             return res.status(401).json({error: err})
@@ -20,21 +19,17 @@ router.get('/allCategory', (req, res) => {
 
 router.post('/postSubmit', authenticate, (req, res) => {
     const userData = req.user
-    //console.log('router', req.body, userData);
     let newPost = new Post();
     newPost.user = userData._id;
     newPost.title = req.body.title;
     newPost.category = req.body.category;
     newPost.content = req.body.content;
 
-    //console.log(newPost);
 
     newPost.save(function(err, result){
         if(err){
-            //console.log('err', err);
             return res.status(401).json({error: err})
         }else{
-            //console.log('result', result);
             return res.status(200).json({response: 'Post has been Created'})
         }
     })
@@ -100,7 +95,6 @@ router.get('/getPostDetail/:postId',  (req, res) => {
 
 router.post('/updatePostDetails', authenticate, (req, res) => {
     const userData = req.user;
-    console.log('route', req.body, userData);
 
     let conditions ={
         '_id': req.body._id
@@ -124,8 +118,6 @@ router.post('/updatePostDetails', authenticate, (req, res) => {
 router.get('/deletePost/:postId', authenticate, (req, res) => {
     const userData = req.user
 
-    console.log(req.params.postId, userData);
-
     Post.find({'_id': ObjectId(req.params.postId), user: ObjectId(userData._id)}).remove().exec(function(err, result){
         if(err){
             return res.status(200).json({error: err})
@@ -134,5 +126,18 @@ router.get('/deletePost/:postId', authenticate, (req, res) => {
         }
     })
 })
+
+router.get('/adminDeletePost/:postId', authenticate, (req, res) => {
+    const userData = req.user
+
+    Post.find({'_id': ObjectId(req.params.postId)}).remove().exec(function(err, result){
+        if(err){
+            return res.status(200).json({error: err})
+        }else {
+            return res.status(200).json({response: 'Post deleted'})
+        }
+    })
+})
+
 
 export default router;
