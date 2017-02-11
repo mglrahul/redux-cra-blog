@@ -7,6 +7,12 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 mongoose.connect(process.env.MONGO_URI);
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log('DB connected!');
+});
+
 mongoose.Promise = require('bluebird');
 
 app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
