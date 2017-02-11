@@ -1,8 +1,8 @@
-const validator = require('validator');
-const trim = require('lodash/trim');
-const isEmpty = require('lodash/isEmpty');
+import validator from 'validator';
+import trim from 'lodash/trim';
+import isEmpty from 'lodash/isEmpty';
 
-function validateInput(data){
+export default function validateInput(data){
     let errors = {};
 
     if(!data.username || trim(data.username)==0){
@@ -28,5 +28,3 @@ function validateInput(data){
         isValid: isEmpty(errors)
     }
 }
-
-module.exports.validateInput = validateInput;

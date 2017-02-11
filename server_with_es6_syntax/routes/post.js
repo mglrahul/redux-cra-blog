@@ -1,9 +1,9 @@
-const express = require('express');
-const Category = require('../models/category');
+import express from 'express';
+import Category from '../models/category';
 var ObjectId = require('mongodb').ObjectId;
 
-const Post = require('../models/post');
-const authenticate = require('../middleware/authenticate');
+import Post from '../models/post';
+import authenticate from '../middleware/authenticate';
 
 let router = express.Router();
 
@@ -18,7 +18,7 @@ router.get('/allCategory', (req, res) => {
     })
 })
 
-router.post('/postSubmit',  (req, res) => {
+router.post('/postSubmit', authenticate, (req, res) => {
     const userData = req.user
     //console.log('router', req.body, userData);
     let newPost = new Post();
@@ -40,7 +40,7 @@ router.post('/postSubmit',  (req, res) => {
     })
 })
 
-router.post('/getSelfPosts',  (req, res) => {
+router.post('/getSelfPosts', authenticate, (req, res) => {
     const userData = req.user
 
     let page = (req.body.page) ? req.body.page: 1;
@@ -98,7 +98,7 @@ router.get('/getPostDetail/:postId',  (req, res) => {
     })
 })
 
-router.post('/updatePostDetails',  (req, res) => {
+router.post('/updatePostDetails', authenticate, (req, res) => {
     const userData = req.user;
     console.log('route', req.body, userData);
 
@@ -121,7 +121,7 @@ router.post('/updatePostDetails',  (req, res) => {
     });
 })
 
-router.get('/deletePost/:postId',  (req, res) => {
+router.get('/deletePost/:postId', authenticate, (req, res) => {
     const userData = req.user
 
     console.log(req.params.postId, userData);
@@ -135,5 +135,4 @@ router.get('/deletePost/:postId',  (req, res) => {
     })
 })
 
-module.exports.router = router;
-//export default router;
+export default router;
