@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-mongoose.connect(process.env.MONGO_URI);
+mongoose.connect('mongodb://kabiragarwal71:kabiragarwal71@ds145649.mlab.com:45649/redux-blog');
 mongoose.Promise = require('bluebird');
 
 app.use(express.static(path.resolve(__dirname, '../react-ui/build')));

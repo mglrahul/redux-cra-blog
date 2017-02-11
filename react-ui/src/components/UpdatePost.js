@@ -1,9 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import map from 'lodash/map';
 import { SubmissionError } from 'redux-form';
-import {reset} from 'redux-form';
 
 import { renderField, renderSelectCatField, renderTextAreaField } from '../utils/textFieldGroup';
 import { required } from '../utils/validations';

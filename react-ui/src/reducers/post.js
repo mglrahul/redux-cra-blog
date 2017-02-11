@@ -1,4 +1,4 @@
-import { CATEGORY_DATA, SET_ALL_POST, SET_POST_DETAIL, SET_SELF_POST, RESET_POST } from '../utils/types';
+import { CATEGORY_DATA, SET_ALL_POST, SET_POST_DETAIL, RESET_POST } from '../utils/types';
 
 
 export default(state = {}, action={}) => {

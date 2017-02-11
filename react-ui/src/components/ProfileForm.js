@@ -2,7 +2,7 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 
-import { required, email, maxLength25 } from '../utils/validations';
+import { required, maxLength25 } from '../utils/validations';
 import { renderField,
     renderSelectField,
     renderRadioField,
@@ -10,7 +10,7 @@ import { renderField,
     renderCheckboxField
 } from '../utils/textFieldGroup';
 import countries from '../utils/countryList';
-import { profileUpdate, profile } from '../actions/user';
+import { profileUpdate } from '../actions/user';
 import { SubmissionError } from 'redux-form';
 
 const validateAndUpdateRecords = (values, dispatch) => {
@@ -37,10 +37,10 @@ class ProfileForm extends React.Component {
             <div>
                 <h1>Profile Page</h1>
                 <form onSubmit={handleSubmit(validateAndUpdateRecords)}>
-                    <div className={typeof error!='undefined'?'show alert alert-danger': 'hidden'}>
+                    <div className={typeof error!=='undefined'?'show alert alert-danger': 'hidden'}>
                      <strong>Error!</strong> {error}
                     </div>
-                    <div className={(submitSucceeded==true)?'show alert alert-success': 'hidden'}>
+                    <div className={(submitSucceeded===true)?'show alert alert-success': 'hidden'}>
                       <strong>Success!</strong> Profile Data is updated!.
                     </div>
                     <Field name="fname" type="text" component={renderField} label="First Name"

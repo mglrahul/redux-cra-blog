@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router'
-import map from 'lodash/map';
 import moment from 'moment';
 
 class AdminUser extends React.Component{

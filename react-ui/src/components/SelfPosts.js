@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
-import map from 'lodash/map';
+
 import moment from 'moment';
 
 class SelfPosts extends React.Component{

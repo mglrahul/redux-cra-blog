@@ -1,6 +1,5 @@
-import React from 'react';
 import { connect } from 'react-redux';
-import { categoryData, setCategoryData, postSubmit } from '../actions/post';
+import { categoryData, setCategoryData } from '../actions/post';
 
 import CreatePost from '../components/CreatePost';
 

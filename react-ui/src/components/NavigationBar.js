@@ -20,7 +20,7 @@ class NavigationBar extends React.Component{
         const authLinks = (
             <ul className="nav navbar-nav navbar-right">
              <li><Link to="/profile"><strong>Hi ! {user.username}</strong></Link></li>
-             {user.role == 'admin'? <li><a href="/AdminDashboard">Logout</a></li>: '' }
+             {user.role === 'admin'? <li><a href="/AdminDashboard">Logout</a></li>: '' }
              <li><a href="javascript.void(0)" onClick={this.logout.bind(this)}>Logout</a></li>
             </ul>
         )
@@ -75,7 +75,7 @@ class NavigationBar extends React.Component{
 
         return (
             <div>
-                {user.role == 'admin' ? AdminSection : FrontEndSection}
+                {user.role === 'admin' ? AdminSection : FrontEndSection}
             </div>
         )
     }
