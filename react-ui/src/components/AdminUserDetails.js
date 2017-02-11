@@ -24,7 +24,7 @@ class AdminUserDetails extends React.Component {
                             <p><strong>Name:</strong> {userDetail.fname} {userDetail.lname } </p>
                             <p><strong>Gender:</strong> {userDetail.gender}</p>
                             <p><strong>Country:</strong> {userDetail.country}</p>
-                            <p><strong>Aboit Us:</strong> {userDetail.about_us}</p>
+                            <p><strong>About Us:</strong> {userDetail.about_us}</p>
                             <p><strong>Newsletter:</strong> {userDetail.newsletter}</p>
                             <p><strong>Created At:</strong> {this.renderFormatTimestamp(userDetail.createdAt)}</p>
                             <p><strong>Updated At:</strong> {this.renderFormatTimestamp(userDetail.updatedAt)}</p>
