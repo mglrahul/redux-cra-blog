@@ -1,0 +1,15 @@
+export const ADD_USER = 'ADD_USER';
+export const SIGNUP_FAILED = 'SIGNUP_FAILED';
+export const ADD_FLASH_MESSAGE = 'ADD_FLASH_MESSAGE';
+export const DELETE_FLASH_MESSAGE = 'ADD_FLASH_MESSAGE';
+export const SET_CURRENT_USER = 'SET_CURRENT_USER';
+export const PROFILE_DATA = 'PROFILE_DATA';
+export const DELETE_PROFILE_DATA = 'DELETE_PROFILE_DATA';
+export const CATEGORY_DATA = 'CATEGORY_DATA';
+export const SET_ALL_POST = 'SET_ALL_POST';
+export const SET_POST_DETAIL = 'SET_POST_DETAIL';
+export const RESET_POST = 'RESET_POST';
+export const SET_ALL_USER = 'SET_ALL_USER';
+export const RESET_USERS = 'RESET_USERS';
+export const SET_USER_DETAIL = 'SET_USER_DETAIL';
+export const RESET_USER_DETAIL = 'RESET_USER_DETAIL';
