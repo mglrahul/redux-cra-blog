@@ -1,10 +1,10 @@
-const express = require('express');
-const isEmpty = require('lodash/isEmpty');
+import express from 'express';
+import isEmpty from 'lodash/isEmpty';
 
-const signinValidations = require('../common/validations/signup');
-const User = require('../models/user');
-const jwt = require('jsonwebtoken');
-const config = require('../common/config');
+import signinValidations from '../common/validations/signup' ;
+import User from '../models/user';
+import jwt from 'jsonwebtoken';
+import config from '../common/config';
 
 let router = express.Router();
 
@@ -85,5 +85,4 @@ router.post('/signup', (req, res) => {
     })
 })
 
-module.exports.router = router;
-//export default router;
+export default router;

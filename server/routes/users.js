@@ -1,15 +1,16 @@
-const express = require('express');
-const isEmpty = require('lodash/isEmpty');
-var ObjectId = require('mongodb').ObjectId;
-const authenticate = require('../middleware/authenticate');
-const Profile = require('../models/profile');
-const User = require('../models/user');
+import express from 'express';
+import isEmpty from 'lodash/isEmpty';
 
+import authenticate from '../middleware/authenticate';
+var ObjectId = require('mongodb').ObjectId;
+import Profile from '../models/profile';
+import User from '../models/user';
+var ObjectId = require('mongodb').ObjectId;
 
 let router = express.Router();
 
-router.get('/getprofile',  (req, res) => {
-    //const userData = req.user;
+router.get('/getprofile', authenticate, (req, res) => {
+    const userData = req.user;
     Profile.findOne({'user': ObjectId(userData._id)}, function(err, user){
         if(err){
             return res.status(400).json({errors: 'no record found'})
@@ -19,7 +20,7 @@ router.get('/getprofile',  (req, res) => {
     })
 });
 
-router.post('/profileUpdate',  (req, res) => {
+router.post('/profileUpdate', authenticate, (req, res) => {
     const userData = req.user;
 
     var query = {
@@ -41,7 +42,7 @@ router.post('/profileUpdate',  (req, res) => {
     });
 })
 
-router.post('/getAllUsers',  (req, res) => {
+router.post('/getAllUsers', authenticate, (req, res) => {
     const userData = req.user
 
     if(userData.role=='admin'){
@@ -67,7 +68,7 @@ router.post('/getAllUsers',  (req, res) => {
     }
 })
 
-router.post('/getUserDetail', (req, res) => {
+router.post('/getUserDetail', authenticate, (req, res) => {
     const userData = req.userData
     const userId = req.body.id;
     Profile.findOne({'user': ObjectId(userId)}, function(err, result){
@@ -78,6 +79,4 @@ router.post('/getUserDetail', (req, res) => {
         }
     })
 })
-
-module.exports.router = router;
-//export default router;
+export default router;
